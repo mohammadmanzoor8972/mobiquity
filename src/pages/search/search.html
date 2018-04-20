@@ -1,0 +1,100 @@
+<!--
+  Generated template for the SearchPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Git Profile Search</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <!-- <input type="text" name="username" class="form-control" placeholder="Enter A Github Username..." [(ngModel)]="githubUser.userName"
+    (keyup)="searchUser()"> -->
+  <ion-searchbar name="username" (ionInput)="searchUser($event)" placeholder="Enter A Github Username..." [(ngModel)]="githubUser.userName"></ion-searchbar>
+  <ion-list>
+    <ion-item>
+      <div *ngIf="githubUser && githubUser.user && (githubUser.userName && githubUser.userName.length > 0)">
+
+        <div class="card">
+        
+          <div class="card-block">
+            <div class="row">
+              <div class="col-xl-4 m-b-1">
+                <img src="{{githubUser.user.avatar_url}}" class="profile-img img-thumbnail m-b-1" />
+               
+              </div>
+
+              <ion-row>
+                  <ion-col>
+                      <button ion-button  center text-center (click)="loadProfile(githubUser)" >View Profile</button>
+                  </ion-col>
+                  <ion-col pull-right>
+                      <button ion-button center text-center (click)="addtoFavrouties()">Add to Favroties</button>
+                  </ion-col>                
+                </ion-row>
+
+             
+              <div class="col-xl-8">
+
+
+                <ul class="list-group">
+                  <li class="list-group-item">
+                    <b>Username: </b> {{githubUser.user.login}}</li>
+                  <li class="list-group-item">
+                    <b>Location: </b> {{githubUser.user.location}}</li>
+                  <li class="list-group-item">
+                    <b>E-Mail: </b> {{githubUser.user.email}}</li>
+                  <li class="list-group-item">
+                    <b>Blog Link: </b> {{githubUser.user.blog}}</li>
+                  <li class="list-group-item">
+                    <b>Member Since: </b> {{githubUser.user.created_at}}</li>
+                </ul>
+
+              </div>
+            </div>
+
+            <div class="status m-t-1">
+
+              <span class="p-a-05 bg-info text-xs-center"> {{githubUser.user.public_repos}} Public Repos </span>
+              <span class="p-a-05 bg-primary m-t-1 text-xs-center"> {{githubUser.user.public_gists}} Public Gists </span>
+              <span class="p-a-05 bg-danger m-t-1 text-xs-center"> {{githubUser.user.followers}} Followers </span>
+              <span class="p-a-05 bg-inverse m-t-1 text-xs-center"> {{githubUser.user.following}} Followings </span>
+
+
+            </div>
+
+          </div>
+        </div>
+
+
+
+      </div>
+    </ion-item>
+  </ion-list>
+  <div class="m-x-auto" *ngIf="githubUser.user == false && (githubUser.userName && githubUser.userName.length > 0)">
+
+    <div class="starter-template text-xs-center">
+      <h5>User Profile not found.</h5>
+      <p class="lead">Please enter a different
+        <b>username</b>.</p>
+    </div>
+
+  </div>
+
+  <div class="m-x-auto" *ngIf="(githubUser.userName.length == 0)">
+
+    <div class="starter-template text-xs-center center text-center">
+      <h5 center text-center>Search any user</h5>
+      <p class="lead" center text-center>Please enter a
+        <b>username</b>.</p>
+    </div>
+
+  </div>
+
+</ion-content>

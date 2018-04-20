@@ -1,0 +1,6 @@
+{
+  "name": "mobiquity",
+  "app_id": "123",
+  "type": "ionic-angular",
+  "integrations": {}
+}
