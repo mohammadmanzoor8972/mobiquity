@@ -42,6 +42,7 @@ export class GithubServiceProvider {
   }
 
   saveFavrote(obj) {    
+    debugger;
     this.favrouteList = JSON.parse(localStorage.getItem("favrouteList")) || [];
     this.favrouteList.push(JSON.parse(JSON.stringify(obj)));
     localStorage.setItem("favrouteList", JSON.stringify(this.favrouteList));

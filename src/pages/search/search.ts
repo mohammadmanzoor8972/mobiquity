@@ -33,7 +33,7 @@ export class SearchPage implements OnInit {
 
     searchUser() {
         setTimeout(function(){},2000)
-        if (this.githubUser.userName && this.githubUser.userName.length > 4) {
+        if (this.githubUser.userName && this.githubUser.userName.length > 2) {
             this._githubService.updateUser(this.githubUser.userName);
             this.getUserInformation();
         } else {

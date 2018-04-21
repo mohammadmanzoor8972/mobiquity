@@ -21,7 +21,7 @@
   <ion-content padding>
       <div *ngIf="historyList.length==0" center text-center padding>No history available</div>
       <ion-list>
-          <ion-item-sliding *ngFor="let item of historyList">
+          <ion-item-sliding *ngFor="let item of historyList;let i=index">
            <ion-item (click)="loadProfile(item)">
               <ion-avatar item-start>
                 <img src="{{item.user.avatar_url}}">
@@ -30,7 +30,7 @@
               <p>{{item.user.login}}</p>
             </ion-item>
             <ion-item-options side="right">
-              <button ion-button color="danger">
+              <button ion-button color="blue" (click)="deleteHistoryItem(item)">
                 <ion-icon name="delete"></ion-icon>
                 Delete
               </button>

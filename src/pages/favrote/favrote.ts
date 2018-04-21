@@ -57,4 +57,9 @@ export class FavrotePage {
     this.navCtrl.push(ProfilePage, data)
   }
 
+  deleteFavroiteItem(item){
+    console.log(item)
+    this.favroteList.splice(this.favroteList.indexOf(item), 1);
+  }
+
 }

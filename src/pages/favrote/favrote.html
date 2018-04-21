@@ -30,7 +30,7 @@
             <p>{{item.user.login}}</p>
           </ion-item>
           <ion-item-options side="right">
-            <button ion-button color="danger">
+            <button ion-button  (click)="deleteFavroiteItem(item)">
               <ion-icon name="delete"></ion-icon>
               Delete
             </button>

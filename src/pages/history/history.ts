@@ -14,7 +14,7 @@ import { AlertController } from 'ionic-angular';
   selector: 'page-history',
   templateUrl: 'history.html',
 })
-export class HistoryPage implements OnInit {
+export class HistoryPage {
   
   private historyList = [];
   constructor(
@@ -24,9 +24,14 @@ export class HistoryPage implements OnInit {
     public _githubService: GithubServiceProvider) {
   }
 
-  ngOnInit(){
+  ionViewWillEnter(){
     this.historyList = this._githubService.getHistoryList();
     console.log( this.historyList);
+  }
+
+  deleteHistoryItem(item){
+    console.log(item)
+    this.historyList.splice(this.historyList.indexOf(item), 1);
   }
 
   clearHistory(){
@@ -46,7 +51,7 @@ export class HistoryPage implements OnInit {
           text: 'Agree',
           handler: () => {
             that._githubService.removeHistory();
-            that.ngOnInit();
+            that.historyList = that._githubService.getHistoryList();
           }
         }
       ]
